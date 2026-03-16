@@ -1,0 +1,308 @@
+{
+  "info": {
+    "name": "Travel Booking System APIs",
+    "_postman_id": "b7b2c9c1-4c1c-4c89-8e32-travel-api",
+    "description": "Complete Travel Booking Backend APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000/api"
+    }
+  ],
+  "item": [
+
+    {
+      "name": "Cities",
+      "item": [
+        {
+          "name": "Get Cities",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/cities"
+          }
+        },
+        {
+          "name": "Create City",
+          "request": {
+            "method": "POST",
+            "header":[{"key":"Content-Type","value":"application/json"}],
+            "body":{
+              "mode":"raw",
+              "raw":"{\n\"name\":\"Goa\",\n\"state\":\"Goa\"\n}"
+            },
+            "url": "{{base_url}}/cities"
+          }
+        },
+        {
+          "name": "City Details",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/cities/1"
+          }
+        },
+        {
+          "name": "Update City",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/cities/1"
+          }
+        },
+        {
+          "name": "Delete City",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/cities/1"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Hotels",
+      "item": [
+        {
+          "name": "Hotel List",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/hotels"
+          }
+        },
+        {
+          "name": "Create Hotel",
+          "request": {
+            "method": "POST",
+            "header":[{"key":"Content-Type","value":"application/json"}],
+            "body":{
+              "mode":"raw",
+              "raw":"{\n\"city_id\":1,\n\"name\":\"Taj Resort\",\n\"price\":5000\n}"
+            },
+            "url": "{{base_url}}/hotels"
+          }
+        },
+        {
+          "name": "Search Hotel By City",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/hotel/search?city_id=1"
+          }
+        },
+        {
+          "name": "Hotel Availability",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/hotel/availability?hotel_id=1"
+          }
+        },
+        {
+          "name": "Recommended Hotels",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/hotel/recommended/1"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Packages",
+      "item": [
+        {
+          "name": "Package List",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/packages"
+          }
+        },
+        {
+          "name": "Create Package",
+          "request": {
+            "method": "POST",
+            "header":[{"key":"Content-Type","value":"application/json"}],
+            "body":{
+              "mode":"raw",
+              "raw":"{\n\"city_id\":1,\n\"title\":\"Goa Holiday\",\n\"days\":3,\n\"price\":15000\n}"
+            },
+            "url": "{{base_url}}/packages"
+          }
+        },
+        {
+          "name": "Package Details",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/packages/1"
+          }
+        },
+        {
+          "name": "Update Package",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/packages/1"
+          }
+        },
+        {
+          "name": "Delete Package",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/packages/1"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Activities",
+      "item": [
+        {
+          "name": "Activity List",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/activities"
+          }
+        },
+        {
+          "name": "Create Activity",
+          "request": {
+            "method": "POST",
+            "header":[{"key":"Content-Type","value":"application/json"}],
+            "body":{
+              "mode":"raw",
+              "raw":"{\n\"city_id\":1,\n\"name\":\"Scuba Diving\",\n\"price\":2000\n}"
+            },
+            "url": "{{base_url}}/activities"
+          }
+        },
+        {
+          "name": "Activities By City",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/activity/city/1"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Booking",
+      "item": [
+        {
+          "name": "Create Booking",
+          "request": {
+            "method": "POST",
+            "header":[{"key":"Content-Type","value":"application/json"}],
+            "body":{
+              "mode":"raw",
+              "raw":"{\n\"package_id\":1,\n\"travel_date\":\"2026-04-01\",\n\"total_price\":15000\n}"
+            },
+            "url": "{{base_url}}/booking/create"
+          }
+        },
+        {
+          "name": "Booking Review",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/booking/review/1"
+          }
+        },
+        {
+          "name": "Select Hotel",
+          "request": {
+            "method": "POST",
+            "header":[{"key":"Content-Type","value":"application/json"}],
+            "body":{
+              "mode":"raw",
+              "raw":"{\n\"booking_id\":1,\n\"hotel_id\":2,\n\"checkin\":\"2026-04-01\",\n\"checkout\":\"2026-04-03\",\n\"price\":6000\n}"
+            },
+            "url": "{{base_url}}/booking/select-hotel"
+          }
+        },
+        {
+          "name": "Add Activity",
+          "request": {
+            "method": "POST",
+            "header":[{"key":"Content-Type","value":"application/json"}],
+            "body":{
+              "mode":"raw",
+              "raw":"{\n\"booking_id\":1,\n\"activity_id\":3,\n\"activity_date\":\"2026-04-02\",\n\"price\":1200\n}"
+            },
+            "url": "{{base_url}}/booking/add-activity"
+          }
+        },
+        {
+          "name": "Remove Activity",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/booking/remove-activity/1"
+          }
+        },
+        {
+          "name": "Cancel Booking",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/booking/cancel/1"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Travelers",
+      "item": [
+        {
+          "name": "Add Traveler",
+          "request": {
+            "method": "POST",
+            "header":[{"key":"Content-Type","value":"application/json"}],
+            "body":{
+              "mode":"raw",
+              "raw":"{\n\"booking_id\":1,\n\"name\":\"Rahul Sharma\",\n\"age\":30,\n\"type\":\"adult\"\n}"
+            },
+            "url": "{{base_url}}/traveler/add"
+          }
+        },
+        {
+          "name": "Traveler List",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/traveler/1"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Payment",
+      "item": [
+        {
+          "name": "Create Payment Order",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/payment/order"
+          }
+        },
+        {
+          "name": "Payment Success",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/payment/success"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "PDF",
+      "item": [
+        {
+          "name": "Download Booking PDF",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/booking/pdf/1"
+          }
+        }
+      ]
+    }
+
+  ]
+}
